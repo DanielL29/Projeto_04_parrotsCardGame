@@ -26,7 +26,7 @@ h1 {
     align-items: stretch;
     flex-wrap: wrap;
 
-    width: 906px;
+    width: 50%; /* 906px */
 }
 
 .card {
@@ -42,6 +42,10 @@ h1 {
     margin-bottom: 34px;
     cursor: pointer;
     position: relative;
+}
+
+.hidden {
+    display: none;
 }
 
 .face {

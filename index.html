@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,106 +12,152 @@
     <link rel="stylesheet" href="style.css">
     <title>Parrot Card Game</title>
 </head>
+
 <body>
     <h1>PARROT CARD GAME</h1>
     <div class="cards">
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
-        <div class="card">
-            <div class="front-face face">
-                <img src="images/front.png" alt="front">
-              </div>
-              <div class="back-face face">
-                <img src="images/explodyparrot.gif" alt="explodyparrot">
-              </div>
-        </div>    
+        <div class="explody">
+            <div class="card hidden" onclick="checkEqualCard(this, 'explody')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/explodyparrot.gif" alt="explodyparrot">
+                </div>
+            </div>
+        </div>
+        <div class="explody">
+            <div class="card hidden" onclick="checkEqualCard(this, 'explody')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/explodyparrot.gif" alt="explodyparrot">
+                </div>
+            </div>
+        </div>
+        <div class="bobros">
+            <div class="card hidden" onclick="checkEqualCard(this, 'bobros')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/bobrossparrot.gif" alt="bobrossparrot">
+                </div>
+            </div>
+        </div>
+        <div class="bobros">
+            <div class="card hidden" onclick="checkEqualCard(this, 'bobros')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/bobrossparrot.gif" alt="bobrossparrot">
+                </div>
+            </div>
+        </div>
+        <div class="fiesta">
+            <div class="card hidden" onclick="checkEqualCard(this, 'fiesta')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/fiestaparrot.gif" alt="fiestaparrot">
+                </div>
+            </div>
+        </div>
+        <div class="fiesta">
+            <div class="card hidden" onclick="checkEqualCard(this, 'fiesta')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/fiestaparrot.gif" alt="fiestaparrot">
+                </div>
+            </div>
+        </div>
+        <div class="metal">
+            <div class="card hidden" onclick="checkEqualCard(this, 'metal')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/metalparrot.gif" alt="metalparrot">
+                </div>
+            </div>
+        </div>
+        <div class="metal">
+            <div class="card hidden" onclick="checkEqualCard(this, 'metal')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/metalparrot.gif" alt="metalparrot">
+                </div>
+            </div>
+        </div>
+        <div class="reverti">
+            <div class="card hidden" onclick="checkEqualCard(this, 'reverti')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/revertitparrot.gif" alt="revertitparrot">
+                </div>
+            </div>
+        </div>
+        <div class="reverti">
+            <div class="card hidden" onclick="checkEqualCard(this, 'reverti')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/revertitparrot.gif" alt="revertitparrot">
+                </div>
+            </div>
+        </div>
+        <div class="triplet">
+            <div class="card hidden" onclick="checkEqualCard(this, 'triplet')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/tripletsparrot.gif" alt="tripletsparrot">
+                </div>
+            </div>
+        </div>
+        <div class="triplet">
+            <div class="card hidden" onclick="checkEqualCard(this, 'triplet')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/tripletsparrot.gif" alt="tripletsparrot">
+                </div>
+            </div>
+        </div>
+        <div class="unicorn">
+            <div class="card hidden" onclick="checkEqualCard(this, 'unicorn')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/unicornparrot.gif" alt="unicornparrot">
+                </div>
+            </div>
+        </div>
+        <div class="unicorn">
+            <div class="card hidden" onclick="checkEqualCard(this, 'unicorn')">
+                <div class="front-face face">
+                    <img src="images/front.png" alt="front">
+                </div>
+                <div class="back-face face">
+                    <img src="images/unicornparrot.gif" alt="unicornparrot">
+                </div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
