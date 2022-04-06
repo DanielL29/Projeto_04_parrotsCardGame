@@ -1,5 +1,6 @@
 let quantityPairs = Number(prompt('Insira numeros pares de 4 a 14'))
 let arrayCards = []
+let countClicks = 0
 // let arrayDefault = [...cards]
 const cardParent = document.querySelectorAll('.cards > div')
 const cards = document.querySelectorAll('.card')
@@ -28,6 +29,7 @@ function showCards() {
 
 function checkEqualCard(element) {
     element.classList.add('active')
+    countClicks++
 
     if(document.querySelectorAll('.active').length % 2 === 0) {
         element.classList.add('secondCard')
@@ -44,4 +46,8 @@ function verifyMatch() {
     }
     document.querySelector('.firstCard').classList.remove('firstCard')
     document.querySelector('.secondCard').classList.remove('secondCard')
+
+    if(document.querySelectorAll('.active').length === quantityPairs) {
+        alert(`Você ganhou em ${countClicks} jogadas!`)
+    }
 }
