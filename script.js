@@ -2,9 +2,21 @@ let quantityPairs = Number(prompt('Insira numeros pares de 4 a 14'))
 let arrayCards = []
 let arrayDefault = []
 let countClicks = 0
+let timer = document.querySelector('.clock')
 const cardParent = document.querySelectorAll('.cards > div')
 
 startOrRestartGame()
+clock()
+
+function clock() {
+    setInterval(() => {
+        if(document.querySelectorAll('.active').length < quantityPairs) {
+            timer.innerHTML++
+        } 
+    }, 1000)
+    clearInterval(clock)
+}
+
 function startOrRestartGame() {
     while (isNaN(quantityPairs) || quantityPairs < 4 || quantityPairs > 14 || quantityPairs % 2 !== 0) {
         quantityPairs = Number(prompt('Insira apenas NUMEROS PARES de 4 a 14!'))
@@ -61,10 +73,11 @@ function verifyMatch(element) {
 }
 
 function finishGame() {
-    alert(`Você ganhou em ${countClicks} jogadas!`)
+    alert(`Você ganhou em ${countClicks} jogadas e ${timer.innerHTML} segundos!`)
     let restart = prompt('Gostaria de reiniciar a partida? (sim ou não)').toLowerCase()
     if(restart === 'sim') {
         countClicks = 0
+        timer.innerHTML = "-1"
         arrayCards = []
         quantityPairs = Number(prompt('Insira numeros pares de 4 a 14'))
         for (let j = 0; j < arrayDefault.length; j++) {
