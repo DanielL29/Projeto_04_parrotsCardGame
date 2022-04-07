@@ -52,6 +52,8 @@ h1 {
   margin-bottom: 34px;
   cursor: pointer;
   position: relative;
+  transition: all 300ms ease-in-out;
+  transform-style: preserve-3d;
 }
 
 .face {
@@ -71,6 +73,10 @@ h1 {
 
 .back-face {
   transform: rotateY(180deg);
+}
+
+.card:hover {
+  transform: scale(120%);
 }
 
 .card.active .back-face {
