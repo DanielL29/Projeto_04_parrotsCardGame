@@ -84,6 +84,7 @@ function verifyMatch(element) {
 function finishGame() {
     alert(`Você ganhou em ${countClicks} jogadas e ${timer.innerHTML} segundos!`)
     let restart = prompt('Gostaria de reiniciar a partida? (sim ou não)').toLowerCase()
+    
     if (restart === 'sim') {
         resetVariables()
     }
