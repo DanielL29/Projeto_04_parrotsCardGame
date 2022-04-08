@@ -2,6 +2,7 @@ let quantityPairs = Number(prompt('Insira numeros pares de 4 a 14'))
 let arrayGifs = ['bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot']
 let arrayDefault = [...arrayGifs]
 let countClicks = 0
+let interval
 let timer = document.querySelector('.clock')
 const cards = document.querySelector('.cards')
 
@@ -9,12 +10,9 @@ startOrRestartGame()
 clock()
 
 function clock() {
-    setInterval(() => {
-        if (document.querySelectorAll('.active').length < quantityPairs) {
-            timer.innerHTML++
-        }
+    interval = setInterval(() => {
+        timer.innerHTML++
     }, 1000)
-    clearInterval(clock)
 }
 
 function shuffleCards() {
@@ -91,9 +89,7 @@ function finishGame() {
     alert(`Você ganhou em ${countClicks} jogadas e ${timer.innerHTML} segundos!`)
     let restart = prompt('Gostaria de reiniciar a partida? (sim ou não)').toLowerCase()
     
-    if (restart === 'sim') {
-        resetVariables()
-    }
+    restart === 'sim' ? resetVariables() : clearInterval(interval)
 }
 
 function resetVariables() {
