@@ -54,8 +54,14 @@ function addCardsQuantity() {
 }
 
 function checkEqualCard(element) {
-    element.classList.add('active')
-    countClicks++
+    if(!element.classList.contains('active')) {
+        countClicks++
+    }
+
+    if(document.querySelectorAll('active').length < 2) {
+        element.classList.add('active')
+    } else return
+
 
     if (document.querySelectorAll('.active').length % 2 === 0) {
         verifyMatch(element)
@@ -65,7 +71,7 @@ function checkEqualCard(element) {
 }
 
 function verifyMatch(element) {
-    if (document.querySelector('.firstCard .back-face img').src !== element.querySelector(' .back-face img').src) {
+    if (document.querySelector('.firstCard .back-face img').src !== element.querySelector('.back-face img').src) {
         element.classList.add('active')
         setTimeout(() => {
             element.classList.remove('active')
