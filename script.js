@@ -1,102 +1,89 @@
-let quantityPairs = Number(prompt('Insira numeros pares de 4 a 14'))
-let arrayGifs = ['bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot']
-let arrayDefault = [...arrayGifs]
-let countClicks = 0
-let interval
+let cardsAmount = Number(prompt('Bem vindo ao Parrot Card Game! Insira numeros pares de 4 a 14 para começar.'))
+let gifsArray = ['bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot']
+let defaultArray = [...gifsArray]
+let clickCounter = 0, selectedCounter = 0
+let firstActived, secondActived, interval, restart
 let timer = document.querySelector('.clock')
 const cards = document.querySelector('.cards')
 
 startOrRestartGame()
 clock()
 
-function clock() {
-    interval = setInterval(() => {
-        timer.innerHTML++
-    }, 1000)
-}
-
-function shuffleCards() {
-    return Math.random() - 0.5
-}
+function clock() { interval = setInterval(() => timer.innerHTML++, 1000) }
+function shuffleCards() { return Math.random() - 0.5 }
 
 function startOrRestartGame() {
-    while (isNaN(quantityPairs) || quantityPairs < 4 || quantityPairs > 14 || quantityPairs % 2 !== 0) {
-        quantityPairs = Number(prompt('Insira apenas NUMEROS PARES de 4 a 14!'))
+    while (isNaN(cardsAmount) || cardsAmount < 4 || cardsAmount > 14 || cardsAmount % 2 !== 0) {
+        cardsAmount = Number(prompt('Insira apenas NUMEROS PARES de 4 a 14!'))
     }
     sortGifs()
 }
 
 function sortGifs() {
-    arrayGifs = [...arrayDefault]
-    arrayGifs.sort(shuffleCards)
-    arrayGifs = arrayGifs.slice(0, (quantityPairs / 2))
-    arrayGifs = arrayGifs.concat(arrayGifs)
-    arrayGifs.sort(shuffleCards)
+    gifsArray = [...defaultArray]
+    gifsArray.sort(shuffleCards)
+    gifsArray = gifsArray.slice(0, (cardsAmount / 2))
+    gifsArray = gifsArray.concat(gifsArray)
+    gifsArray.sort(shuffleCards)
     addCardsQuantity()
 }
 
-
 function addCardsQuantity() {
-    for (let i = 0; i < arrayGifs.length; i++) {
+    for (let i = 0; i < gifsArray.length; i++) {
         cards.innerHTML += `
-            <div class="card" onclick="checkEqualCard(this)">
+            <div class="card" onclick="activeCard(this)">
                 <div class="front-face face">
                     <img src="images/front.png" alt="front">
                 </div>
                 <div class="back-face face">
-                    <img src="images/${arrayGifs[i]}.gif" alt="${arrayGifs[i]}">
+                    <img src="images/${gifsArray[i]}.gif" alt="${gifsArray[i]}">
                 </div>
             </div>
         `
     }
 }
 
-function checkEqualCard(element) {
-    if(!element.classList.contains('active')) {
-        countClicks++
-    }
-
-    if(document.querySelectorAll('active').length < 2) {
-        element.classList.add('active')
-    } else return
-
-
-    if (document.querySelectorAll('.active').length % 2 === 0) {
-        verifyMatch(element)
-    } else {
-        element.classList.add('firstCard')
-    }
+function activeCard(element) {
+    if(selectedCounter === 0) {
+        firstActived = element
+        firstActived.classList.add('active')
+        selectedCounter++, clickCounter++
+    } else if(selectedCounter === 1) {
+        secondActived = element
+        secondActived.classList.add('active')
+        selectedCounter++, clickCounter++
+        setTimeout(verifyMatch, 1000)
+    } 
 }
 
-function verifyMatch(element) {
-    if (document.querySelector('.firstCard .back-face img').src !== element.querySelector('.back-face img').src) {
-        element.classList.add('active')
-        setTimeout(() => {
-            element.classList.remove('active')
-            document.querySelector('.firstCard').classList.remove('active')
-        }, 1000)
-    }
-    setTimeout(() => {
-        document.querySelector('.firstCard').classList.remove('firstCard')
-    }, 1000)
+function verifyMatch() {
+    if(firstActived.querySelector('.back-face img').src !== secondActived.querySelector('.back-face img').src) {
+        firstActived.classList.remove('active'), secondActived.classList.remove('active')
+        selectedCounter = 0
+    } else selectedCounter = 0
 
-    if (document.querySelectorAll('.active').length === quantityPairs) {
-        setTimeout(finishGame, 1000)
-    }
+    if (document.querySelectorAll('.active').length === cardsAmount) finishGame()
 }
 
 function finishGame() {
-    alert(`Você ganhou em ${countClicks} jogadas e ${timer.innerHTML} segundos!`)
-    let restart = prompt('Gostaria de reiniciar a partida? (sim ou não)').toLowerCase()
-    
-    restart === 'sim' ? resetVariables() : clearInterval(interval)
+    alert(`Você ganhou em ${clickCounter} jogadas e ${timer.innerHTML} segundos!`)
+
+    do {
+        restart = prompt('Gostaria de reiniciar a partida? (Por favor digite sim ou não)').toLowerCase()
+    } while(restart !== 'não' && restart !== 'sim')
+
+    if(restart === 'sim') resetVariables() 
+    else if(restart === 'não') {
+        clearInterval(interval)
+        alert('Fim do jogo!')
+    }
 }
 
 function resetVariables() {
-    countClicks = 0
-    arrayGifs = []
+    clickCounter = 0
+    gifsArray = []
     timer.innerHTML = "-1"
     cards.innerHTML = ''
-    quantityPairs = Number(prompt('Insira numeros pares de 4 a 14'))
+    cardsAmount = Number(prompt('Insira numeros pares de 4 a 14'))
     startOrRestartGame()
 }
