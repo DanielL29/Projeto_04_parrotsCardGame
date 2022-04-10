@@ -18,6 +18,8 @@ body>div:first-child {
   width: 100%;
 }
 
+/* Title */
+
 h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 56px;
@@ -30,6 +32,8 @@ h1 {
   flex: 1;
 }
 
+/* Cards Container */
+
 .cards {
   display: flex;
   justify-content: center;
@@ -38,6 +42,8 @@ h1 {
 
   width: 50%;
 }
+
+/* Each Card */
 
 .card {
   display: flex;
@@ -55,6 +61,8 @@ h1 {
   transition: all 300ms ease-in-out;
   transform-style: preserve-3d;
 }
+
+/* Flip Animation */
 
 .face {
   width: 100%;
@@ -87,10 +95,14 @@ h1 {
   transform: rotateY(-180deg);
 }
 
+/* Card Image */
+
 .card img {
   height: 100px;
   width: 100px;
 }
+
+/* Clock */
 
 .clock {
   display: flex;

@@ -20,7 +20,6 @@ function startOrRestartGame() {
 }
 
 function sortGifs() {
-    gifsArray = [...defaultArray]
     gifsArray.sort(shuffleCards)
     gifsArray = gifsArray.slice(0, (cardsAmount / 2))
     gifsArray = gifsArray.concat(gifsArray)
@@ -44,6 +43,8 @@ function addCardsQuantity() {
 }
 
 function activeCard(element) {
+    if(element.classList.contains('active')) return
+
     if(selectedCounter === 0) {
         firstActived = element
         firstActived.classList.add('active')
@@ -67,7 +68,6 @@ function verifyMatch() {
 
 function finishGame() {
     alert(`Você ganhou em ${clickCounter} jogadas e ${timer.innerHTML} segundos!`)
-
     do {
         restart = prompt('Gostaria de reiniciar a partida? (Por favor digite sim ou não)').toLowerCase()
     } while(restart !== 'não' && restart !== 'sim')
@@ -81,7 +81,7 @@ function finishGame() {
 
 function resetVariables() {
     clickCounter = 0
-    gifsArray = []
+    gifsArray = [...defaultArray]
     timer.innerHTML = "-1"
     cards.innerHTML = ''
     cardsAmount = Number(prompt('Insira numeros pares de 4 a 14'))
