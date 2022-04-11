@@ -26,10 +26,8 @@ h1 {
   font-weight: bold;
   color: #75B79E;
   margin-top: 40px;
-  margin-left: 80px;
   margin-bottom: 47px;
   text-align: center;
-  flex: 1;
 }
 
 /* Cards Container */
@@ -115,8 +113,13 @@ h1 {
   font-weight: bold;
   font-size: 20px;
   border-radius: 5px;
-  margin-right: 20px;
-  margin-top: -10px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
   font-family: 'Roboto', sans-serif;
+  position: fixed;
+  right: 20px;
+  top: 45px;
+}
+
+@media screen and (max-width: 700px) {
+  .clock { top: 100px; }
 }
